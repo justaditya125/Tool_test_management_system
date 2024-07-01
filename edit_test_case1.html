@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Test Case</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("{{ url_for('static', filename='images/SPACE.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #ffffff;
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], select {
+            width: calc(100% - 18px);
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .back-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-button a {
+            background-color: #f44336;
+            color: white;
+            padding: 8px 12px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .back-button a:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Test Case</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        <form action="{{ url_for('edit_test_case', test_case_id=test_case.id) }}" method="POST">
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" value="{{ test_case.id }}" readonly><br>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" value="{{ test_case.description }}" required><br>
+            <label for="result">Result:</label>
+            <select id="result" name="result">
+                <option value="Pass" {% if test_case.result == 'Pass' %}selected{% endif %}>Pass</option>
+                <option value="Fail" {% if test_case.result == 'Fail' %}selected{% endif %}>Fail</option>
+            </select><br>
+            <label for="remarks">Remarks:</label>
+            <input type="text" id="remarks" name="remarks" value="{{ test_case.remarks }}" required><br>
+            <select name="version_id" required>
+                {% for version in versions %}
+                    <option value="{{ version.id }}" {% if version.id == test_case.version_id %}selected{% endif %}>
+                        {{ version.version_number }}
+                    </option>
+                {% endfor %}
+            </select>
+            <input type="submit" value="Save Changes">
+        </form>
+        <div class="back-button">
+            <a href="{{ url_for('all_test_cases') }}">Back to All Test Cases</a>
+        </div>
+    </div>
+</body>
+</html>

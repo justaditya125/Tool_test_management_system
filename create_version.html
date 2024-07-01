@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Version</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url("{{ url_for('static', filename='images/SPACE.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            display: flex;
+            justify-content: center; /* Center align horizontally */
+            align-items: center; /* Center align vertically */
+            min-height: 100vh; /* Ensure full viewport height */
+        }
+        .container {
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+        form {
+            margin-bottom: 30px;
+        }
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+        }
+        input[type="text"], select, input[type="file"], input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #bdc3c7;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+        .versions-container {
+            margin-top: 30px;
+        }
+        .version-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #ecf0f1;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .version-number {
+            float: left;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .delete-button, .view-button {
+            float: right;
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-weight: 600;
+        }
+        .delete-button {
+            background-color: #e74c3c;
+            margin-left: 10px;
+        }
+        .delete-button:hover {
+            background-color: #c0392b;
+        }
+        .view-button {
+            background-color: #2ecc71;
+        }
+        .view-button:hover {
+            background-color: #27ae60;
+        }
+        .back-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-button a {
+            background-color: #34495e;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            font-weight: 600;
+        }
+        .back-button a:hover {
+            background-color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Version</h1>
+        <form method="post">
+            <label for="version_number">Version Number:</label>
+            <input type="text" id="version_number" name="version_number" required>
+            <input type="submit" value="Create Version">
+        </form>
+        <div class="versions-container">
+            <h2>Created Versions</h2>
+            {% if versions %}
+                {% for version in versions %}
+                    <div class="version-item">
+                        <span class="version-number">{{ version.version_number }}</span>
+                        <form method="post" action="{{ url_for('delete_version', version_id=version.id) }}">
+                            <button type="submit" class="delete-button">Delete</button>
+                        </form>
+                        <a href="{{ url_for('view_version_data', version_id=version.id) }}" class="view-button">View Data</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No versions created yet.</p>
+            {% endif %}
+        </div>
+        <div class="back-button">
+            <a href="{{ url_for('add_test_case') }}">Back</a>
+        </div>
+    </div>
+</body>
+</html>

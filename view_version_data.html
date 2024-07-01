@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version Data</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            background-image: url("{{ url_for('static', filename='images/SPACE.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .back-button {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-button a {
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            font-weight: 600;
+        }
+        .back-button a:hover {
+            background-color: #c0392b;
+        }
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Version {{ version_data.version_number }} Data</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Description</th>
+                    <th>Result</th>
+                    <th>Remarks</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if test_case_data %}
+                    {% for test_case in test_case_data %}
+                        <tr>
+                            <td>{{ test_case.id }}</td>
+                            <td>{{ test_case.description }}</td>
+                            <td>{{ test_case.result }}</td>
+                            <td>{{ test_case.remarks }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="4" class="center">No test cases found for this version.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+        <div class="back-button">
+            <a href="{{ url_for('create_version') }}">Back to Versions</a>
+        </div>
+    </div>
+</body>
+</html>

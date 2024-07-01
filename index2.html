@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tool Test System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url("{{ url_for('static', filename='images/SPACE.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            padding: 50px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 36px;
+            font-size: 36px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+        li {
+            margin-bottom: 24px;
+        }
+        a {
+            display: block;
+            padding: 16px 24px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            text-align: center;
+            font-size: 18px;
+        }
+        a:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .footer {
+            text-align: center;
+            margin-top: 36px;
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+            height: auto;
+            z-index: 1000;
+        }
+        .welcome-message {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #2c3e50;
+        }
+        .logout-button {
+            margin-top: 20px;
+        }
+        .logout-button a {
+            background-color: #e74c3c;
+        }
+        .logout-button a:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>Tool Test System</h1>
+        <p class="welcome-message">Welcome!</p>
+        <ul>
+            <li><a href="{{ url_for('create_version') }}">Create Version</a></li>
+            <li><a href="{{ url_for('add_test_case') }}">Add Test Case</a></li>
+            <li><a href="{{ url_for('add_other_test_case') }}">Add Result Data</a></li>
+            <li><a href="{{ url_for('compare_data') }}">Compare Data</a></li>
+            <li><a href="{{ url_for('all_test_cases') }}">All Test Cases</a></li>
+        </ul>
+        <div class="logout-button">
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

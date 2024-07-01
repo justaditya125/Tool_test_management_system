@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Test Case</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --primary-hover: #2980b9;
+            --secondary-color: #e74c3c;
+            --secondary-hover: #c0392b;
+            --background-color: #ecf0f1;
+            --container-bg: #ffffff;
+            --border-color: #bdc3c7;
+            --text-color: #34495e;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url("{{ url_for('static', filename='images/SPACE.jpg') }}");
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center; /* Center align horizontally */
+            align-items: center; /* Center align vertically */
+            min-height: 100vh; /* Ensure full viewport height */
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: var(--container-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+        }
+        h1 {
+            text-align: center;
+            margin-top: 0;
+            color: var(--primary-color);
+            font-size: 28px;
+            margin-bottom: 24px;
+        }
+        form {
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between; /* Align items with space in between */
+            align-items: center; /* Center align vertically */
+        }
+        input[type="submit"] {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+        input[type="submit"]:hover {
+            background-color: var(--primary-hover);
+        }
+        .back-button a {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .back-button a:hover {
+            background-color: var(--secondary-hover);
+        }
+        .back-button {
+            text-align: left;
+            margin-top: 24px;
+        }
+        .flash-messages {
+            margin-bottom: 24px;
+        }
+        .flash-message {
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+        .flash-message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .flash-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add ID</h1>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="flash-message {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        
+        <form action="{{ url_for('add_test_case') }}" method="POST">
+            <label for="data">Data:</label>
+            <input type="text" id="data" name="data" required>
+            
+            <div class="button-group">
+                <div class="back-button">
+                    <a href="{{ url_for('index') }}">Back</a>
+                </div>
+                <input type="submit" value="Submit">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
