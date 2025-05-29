@@ -42,7 +42,7 @@ git clone https://github.com/justaditya125/test-case-management.git
 cd test-case-management
 
 
-🐍 Step 2: Set Up a Virtual Environment (Recommended)
+###🐍 Step 2: Set Up a Virtual Environment (Recommended)
 ```bash
 On macOS/Linux:
 python3 -m venv venv
@@ -53,7 +53,7 @@ On Windows:
 python -m venv venv
 venv\Scripts\activate
 
-📦 Step 3: Install Python Dependencies
+###📦 Step 3: Install Python Dependencies
 If a requirements.txt file is provided:
 ```bash
 pip install -r requirements.txt
@@ -62,7 +62,7 @@ Or install manually:
 ```bash
 pip install flask mysql-connector-python
 
-🛠️ Step 4: Set Up the MySQL Database
+###🛠️ Step 4: Set Up the MySQL Database
 ✅ 1. Open MySQL Command Line
 ```bash
 mysql -u root -p
@@ -72,7 +72,7 @@ Enter your MySQL root password when prompted.
 ```sql
 CREATE DATABASE database;
 
-⚙️ Step 5: Configure app.py
+###⚙️ Step 5: Configure app.py
 Open app.py and update these variables with your MySQL credentials:
 ```bash
 MYSQL_USER = 'your_mysql_user'
@@ -80,7 +80,7 @@ MYSQL_PASSWORD = 'your_mysql_password'
 MYSQL_HOST = 'localhost'
 MYSQL_DATABASE = 'database name'
 
-▶️ Step 6: Run the Application
+###▶️ Step 6: Run the Application
 Once everything is set up, start the Flask app:
 ```bash
 python app.py
@@ -90,7 +90,7 @@ Flask will start a development server. Open your browser and go to:
 http://127.0.0.1:5000/
 
 
-🧪 How to Use
+###🧪 How to Use
 ✅ Register a new user
 🔐 Log in with your credentials
 ➕ Add test cases
@@ -98,7 +98,7 @@ http://127.0.0.1:5000/
 🧬 Create and manage versions
 📄 View all test cases and versions
 
-📁 Project Structure
+###📁 Project Structure
 test-case-management/
 │
 ├── templates/
@@ -117,23 +117,23 @@ test-case-management/
 └── README.md
 
 
-🧰 Troubleshooting
+###🧰 Troubleshooting
 ❌ MySQL Connection Error
 Make sure MySQL is running
 Double-check your username/password in app.py
 Ensure the aditya2 database exists
 
-⚠️ Flask Page Not Loading
+###⚠️ Flask Page Not Loading
 Check the terminal output for Flask errors
 Make sure you’re visiting http://127.0.0.1:5000/
 Verify HTML files are inside the templates/ folder
 
-📄 License
+###📄 License
 This project is licensed under the MIT License.
 See the LICENSE file for more information.
 
 
-🤝 Contributing
+###🤝 Contributing
 Fork the repository
 Create a new branch: git checkout -b feature-name
 Make your changes
@@ -141,7 +141,7 @@ Commit: git commit -m "Added new feature"
 Push: git push origin feature-name
 Open a Pull Request
 
-📬 Contact
+###📬 Contact
 For any questions or suggestions, feel free to reach out:
 ADITYA SAH
 📧 aditya57671@gmail.com
@@ -149,7 +149,7 @@ ADITYA SAH
 
 ```yaml
 
-This README includes:
+###This README includes:
 
 - ✅ Full setup commands (even for absolute beginners)
 - ✅ Clear MySQL instructions
