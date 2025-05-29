@@ -79,7 +79,7 @@ mysql -u root -p
 Enter your MySQL root password when prompted.
 ✅ 2. Create the Database:
 ```sql
-CREATE DATABASE database;
+CREATE DATABASE database name;
 ```
 
 ---
