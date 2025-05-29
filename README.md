@@ -41,6 +41,7 @@ Follow these steps to set up the project on your local machine:
 git clone https://github.com/justaditya125/test-case-management.git
 cd test-case-management
 
+---
 
 ###🐍 Step 2: Set Up a Virtual Environment (Recommended)
 ```bash
@@ -53,6 +54,8 @@ On Windows:
 python -m venv venv
 venv\Scripts\activate
 
+---
+
 ###📦 Step 3: Install Python Dependencies
 If a requirements.txt file is provided:
 ```bash
@@ -61,6 +64,8 @@ pip install -r requirements.txt
 Or install manually:
 ```bash
 pip install flask mysql-connector-python
+
+---
 
 ###🛠️ Step 4: Set Up the MySQL Database
 ✅ 1. Open MySQL Command Line
@@ -80,6 +85,8 @@ MYSQL_PASSWORD = 'your_mysql_password'
 MYSQL_HOST = 'localhost'
 MYSQL_DATABASE = 'database name'
 
+---
+
 ###▶️ Step 6: Run the Application
 Once everything is set up, start the Flask app:
 ```bash
@@ -89,6 +96,7 @@ Flask will start a development server. Open your browser and go to:
 ```cpp
 http://127.0.0.1:5000/
 
+---
 
 ###🧪 How to Use
 ✅ Register a new user
@@ -97,6 +105,8 @@ http://127.0.0.1:5000/
 📝 Edit or delete test cases
 🧬 Create and manage versions
 📄 View all test cases and versions
+
+---
 
 ###📁 Project Structure
 test-case-management/
@@ -116,6 +126,7 @@ test-case-management/
 ├── requirements.txt
 └── README.md
 
+---
 
 ###🧰 Troubleshooting
 ❌ MySQL Connection Error
@@ -123,15 +134,20 @@ Make sure MySQL is running
 Double-check your username/password in app.py
 Ensure the aditya2 database exists
 
+---
+
 ###⚠️ Flask Page Not Loading
 Check the terminal output for Flask errors
 Make sure you’re visiting http://127.0.0.1:5000/
 Verify HTML files are inside the templates/ folder
 
+---
+
 ###📄 License
 This project is licensed under the MIT License.
 See the LICENSE file for more information.
 
+---
 
 ###🤝 Contributing
 Fork the repository
@@ -141,13 +157,15 @@ Commit: git commit -m "Added new feature"
 Push: git push origin feature-name
 Open a Pull Request
 
+---
+
 ###📬 Contact
 For any questions or suggestions, feel free to reach out:
 ADITYA SAH
 📧 aditya57671@gmail.com
 🌐 https://github.com/justaditya125
 
-```yaml
+---
 
 ###This README includes:
 
